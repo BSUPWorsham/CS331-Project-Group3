@@ -25,7 +25,7 @@ public class Driver {
             switch (opt.toLowerCase()) {
                 case "p":
                 case "polybius":
-                    //Polybius.main(passThrough);
+                    PolybiusSquare.main(passThrough);
                     break;
                 case "s":
                 case "steganography":
