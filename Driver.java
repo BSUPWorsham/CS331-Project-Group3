@@ -33,7 +33,7 @@ public class Driver {
                     break;
                 case "v":
                 case "vigenere":
-                    //Vigenere.main(passThrough);
+                    Vigenere.main(passThrough);
                     break;
                 case "e": // remove whichever one is not used
                 case "el gamal":
