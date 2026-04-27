@@ -57,11 +57,11 @@ public class Vigenere {
         for (int i = 0; i < plaintext.length(); i++) {
             int index;
 
-            System.out.println("Pi: " + getLetterIndex(plaintext.charAt(i)));
-            System.out.println("Ki: " + getLetterIndex(keyArray[i]));
+            System.out.println("Pi (index of " + plaintext.charAt(i) + "): " + getLetterIndex(plaintext.charAt(i)));
+            System.out.println("Ki (index of " + keyArray[i] + "): " + getLetterIndex(keyArray[i]));
 
             index = (getLetterIndex(plaintext.charAt(i)) + getLetterIndex(keyArray[i])) % letters.length;
-            System.out.println("Letter Index: (" + getLetterIndex(plaintext.charAt(i)) + " + "
+            System.out.println("Encrypted Letter Index: (" + getLetterIndex(plaintext.charAt(i)) + " + "
                     +  getLetterIndex(keyArray[i]) + ") % 26 = " + index);
             System.out.println();
 
@@ -77,8 +77,8 @@ public class Vigenere {
         for (int i = 0; i < ciphertext.length(); i++) {
             int index;
 
-            System.out.println("Ci: " + getLetterIndex(ciphertext.charAt(i)));
-            System.out.println("Ki: " + getLetterIndex(keyArray[i]));
+            System.out.println("Ci (index of " + ciphertext.charAt(i) + "):  " + getLetterIndex(ciphertext.charAt(i)));
+            System.out.println("Ki (index of " + keyArray[i] + "): " + getLetterIndex(keyArray[i]));
 
             int firstPart = getLetterIndex(ciphertext.charAt(i)) - getLetterIndex(keyArray[i]);
             if (firstPart < 0) {
@@ -87,7 +87,7 @@ public class Vigenere {
                 index = firstPart % letters.length;
             }
 
-            System.out.println("Letter Index: (" + getLetterIndex(ciphertext.charAt(i)) + " - "
+            System.out.println("Decrypted Letter Index: (" + getLetterIndex(ciphertext.charAt(i)) + " - "
                     +  getLetterIndex(keyArray[i]) + ") % 26 = " + index);
             System.out.println();
 
