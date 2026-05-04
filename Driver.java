@@ -35,11 +35,10 @@ public class Driver {
                 case "vigenere":
                     Vigenere.main(passThrough);
                     break;
-                case "e": // remove whichever one is not used
-                case "el gamal":
-                case "ellipitical curve":
-                    //ElGamal.main(passThrough);
-                    //EllipticalCurve.main(passThrough);
+                case "e": 
+                case "elgamal":
+                    ElGamal.main(passThrough);
+                    menuDisplay();
                     break;
                 case "c":
                 case "ceasar":
