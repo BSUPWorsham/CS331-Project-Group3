@@ -8,6 +8,7 @@ public class Ceasar {
             'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W','X', 'Y', 'Z'};
 
      public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
         System.out.println("Ceasar Cipher");
         System.out.println("Please enter your plaintext:");
         String plaintext = input.nextLine().toUpperCase().replaceAll(" ", "");
