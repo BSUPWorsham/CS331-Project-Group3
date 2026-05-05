@@ -15,13 +15,20 @@ public class Steganography {
 
         try {
             if (command.equals("embed")) {
-                if (args.length != 4) {
+                if (args.length < 4) {
                     printUsage();
                     return;
                 }
                 String inputImagePath = args[1];
-                String message = args[2];
-                String outputImagePath = args[3];
+                String outputImagePath = args[args.length - 1];
+                StringBuilder messageBuilder = new StringBuilder();
+                for (int i = 2; i < args.length - 1; i++) {
+                    if (i > 2) {
+                        messageBuilder.append(" ");
+                    }
+                    messageBuilder.append(args[i]);
+                }
+                String message = messageBuilder.toString();
                 embedMessage(inputImagePath, message, outputImagePath);
                 System.out.println("Message embedded successfully into: " + outputImagePath);
             } else if (command.equals("extract")) {
@@ -44,6 +51,7 @@ public class Steganography {
         System.out.println("Usage:");
         System.out.println("  java Steganography embed <inputImage> <message> <outputImage>");
         System.out.println("  java Steganography extract <inputImage>");
+        System.out.println("Note: wrap multi-word messages in quotes, e.g. \"Hello World.\"");
     }
 
     public static void embedMessage(String inputImagePath, String message, String outputImagePath) throws IOException {
