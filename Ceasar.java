@@ -16,34 +16,39 @@ public class Ceasar {
         System.out.println("Please enter a Integer as the key");
         int key = input.nextInt();
         elaboratedEncrypt(plaintext,key);
+        
+        input.close();
     }
 
     public String encrypt(String plainText , int key){
         String ciperText = "";
-        for(char plain : plainText){
-            ciperText += letters[(CharsIndex(plain) + key)];
+        char[] chars = plainText.toCharArray();
+        for(char plain : chars){
+            ciperText += letters[(CharIndex(plain) + key)];
         }
         return ciperText;
     }
 
     public String decrypt(String plainText , int key){
         String ciperText = "";
-        for(char plain : plainText){
-            ciperText += letters[(CharsIndex(plain) - key)];
+        char[] chars = plainText.toCharArray();
+        for(char plain : chars){
+            ciperText += letters[(CharIndex(plain) - key)];
         }
         return ciperText;
     }
 
-    public String elaboratedEncrypt(String plainText , int key){
+    public static String elaboratedEncrypt(String plainText , int key){
         System.out.println("The encyphering function for the ceasar cipher is char + key mod range of possible charecters");
         System.out.println("In this case the index of the current plaintext charecter plus the key  mod 26 ");
         String ciperText = "";
-        for(char plain : plainText){
-            char cipherChar = letters[(CharsIndex(plain) + key)];
+        char[] chars = plainText.toCharArray();
+        for(char plain : chars){
+            char cipherChar = letters[(CharIndex(plain) + key)];
             ciperText += cipherChar;
             System.out.println(plain + " encrypted using key " + key  + " is " + cipherChar);
         }
-        System.out.println(plaintext + " encrypted using key " + key  + " is " + ciphertext);
+        System.out.println(plainText + " encrypted using key " + key  + " is " + ciperText);
         return ciperText;
     }
 
@@ -51,23 +56,40 @@ public class Ceasar {
         System.out.println("The decyphering function for the ceasar cipher is char - key mod range of possible charecters");
         System.out.println("In this case the index of the current plaintext charecter minus the key  mod 26 ");
         String ciperText = "";
-        for(char plain : plainText){
-            char cipherChar = letters[(CharsIndex(plain) - key)];
+        char[] chars = plainText.toCharArray();
+        for(char plain : chars){
+            char cipherChar = letters[(CharIndex(plain) - key)];
             ciperText += cipherChar;
             System.out.println(plain + " decrypted using key " + key  + " is " + cipherChar);
         }
-        System.out.println(plaintext + " decrypted using key " + key  + " is " + ciphertext);
+        System.out.println(plainText + " decrypted using key " + key  + " is " + ciperText);
         return ciperText;
     }
 
+    private static int CharIndex(char plain){
+        int currIndex = 0;
+        boolean found = false;
+        while(!found && currIndex<letters.length){
+            if(letters[currIndex] == plain){
+                found = true;
+            }
+        }
+        if(!found){
+            System.out.println("something went wrong");
+            return -1;
+        }
+        return currIndex;
+    }
+
+     /* 
     private int[] CharsIndex(String plain){
-        int[] charsindex = int[plain.length()];
         char[] chars = plain.toCharArray();
+        int[] charsindex = int[chars.length()];
         for(int i =0 ; i < chars.length ; i++){
-            int currindex = 0;
+            int currIndex = 0;
             boolean found = false;
-            while(!found && currIndex<letters.length){
-                if(letters[currIndex] = chars[i]){
+            while(!found && currIndex <letters.length){
+                if(letters[currIndex] == chars[i]){
                     found = true;
                 }
             }
@@ -75,9 +97,9 @@ public class Ceasar {
                 System.out.println("something went wrong");
                 return null;
             }
-            charsindex[i] = currindex;
+            charsindex[i] = currIndex;
         }
         return charsindex;
     }
-
+        */
 }
