@@ -1,9 +1,7 @@
 
 import java.util.Scanner;
 
-import static java.lang.Character.toUpperCase;
-
-public class Ceasar {
+public class Caesar {
     public static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
             'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W','X', 'Y', 'Z'};
 
@@ -14,22 +12,21 @@ public class Ceasar {
         String plaintext = input.nextLine().toUpperCase().replaceAll(" ", "");
         System.out.println("Plain Text : " + plaintext);
         System.out.println("Please enter a Integer as the key");
-        int key = input.nextInt();
+        int key = Integer.parseInt(input.nextLine());
         elaboratedEncrypt(plaintext,key);
-        
         input.close();
     }
 
-    public String encrypt(String plainText , int key){
+    public static String encrypt(String plainText , int key){
         String ciperText = "";
         char[] chars = plainText.toCharArray();
         for(char plain : chars){
-            ciperText += letters[(CharIndex(plain) + key)];
+            ciperText += letters[((CharIndex(plain) + key) % 26)];
         }
         return ciperText;
     }
 
-    public String decrypt(String plainText , int key){
+    public static String decrypt(String plainText , int key){
         String ciperText = "";
         char[] chars = plainText.toCharArray();
         for(char plain : chars){
@@ -44,7 +41,7 @@ public class Ceasar {
         String ciperText = "";
         char[] chars = plainText.toCharArray();
         for(char plain : chars){
-            char cipherChar = letters[(CharIndex(plain) + key)];
+            char cipherChar = letters[((CharIndex(plain) + key) % 26)];
             ciperText += cipherChar;
             System.out.println(plain + " encrypted using key " + key  + " is " + cipherChar);
         }
@@ -52,7 +49,7 @@ public class Ceasar {
         return ciperText;
     }
 
-    public String elaboratedDecrypt(String plainText , int key){
+    public static String elaboratedDecrypt(String plainText , int key){
         System.out.println("The decyphering function for the ceasar cipher is char - key mod range of possible charecters");
         System.out.println("In this case the index of the current plaintext charecter minus the key  mod 26 ");
         String ciperText = "";
@@ -69,10 +66,11 @@ public class Ceasar {
     private static int CharIndex(char plain){
         int currIndex = 0;
         boolean found = false;
-        while(!found && currIndex<letters.length){
+        while(!found && currIndex < letters.length){
             if(letters[currIndex] == plain){
                 found = true;
             }
+            currIndex++;
         }
         if(!found){
             System.out.println("something went wrong");
