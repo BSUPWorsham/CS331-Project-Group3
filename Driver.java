@@ -41,8 +41,8 @@ public class Driver {
                     menuDisplay();
                     break;
                 case "c":
-                case "ceasar":
-                    Ceasar.main(passThrough);
+                case "caesar":
+                    Caesar.main(passThrough);
                     break;
                 case "r":
                 case "rsa":
