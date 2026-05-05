@@ -14,7 +14,7 @@ public class Caesar {
         System.out.println("Please enter a Integer as the key");
         int key = Integer.parseInt(input.nextLine());
         elaboratedEncrypt(plaintext,key);
-        input.close();
+        //input.close();
     }
 
     public static String encrypt(String plainText , int key){
