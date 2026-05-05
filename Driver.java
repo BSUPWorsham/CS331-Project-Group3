@@ -29,7 +29,7 @@ public class Driver {
                     break;
                 case "s":
                 case "steganography":
-                    //Steganography.main(passThrough);
+                    Steganography.main(passThrough);
                     break;
                 case "v":
                 case "vigenere":
