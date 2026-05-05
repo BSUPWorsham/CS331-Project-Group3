@@ -69,6 +69,7 @@ public class Caesar {
         while(!found && currIndex < letters.length){
             if(letters[currIndex] == plain){
                 found = true;
+                break;
             }
             currIndex++;
         }
