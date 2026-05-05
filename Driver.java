@@ -17,9 +17,9 @@ public class Driver {
     private static String[] passThrough;
 
     public static void main(String[] args) {
-        menuDisplay();
         
         while (true) {
+            menuDisplay();
             System.out.print("> ");
             String opt = scan.nextLine();
             switch (opt.toLowerCase()) {
